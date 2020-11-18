@@ -1,0 +1,32 @@
+create database servus;
+use servus;
+
+create table company(
+	id int auto_increment,
+    name varchar(255) not null,
+    primary key(id)
+);
+
+create table servers(
+	id int auto_increment,
+    server_name varchar(255) not null,
+    ip varchar(255) not null,
+    hosting_company_id int,
+    current_status boolean default true,
+    created_at datetime default now(),
+    primary key(id),
+    foreign key(hosting_company_id) references company(id)
+);
+
+
+insert into company (name) values ("Microsoft");
+insert into company (name) values ("IBM");
+insert into company (name) values ("GoDaddy");
+insert into company (name) values ("DigitalIO");
+
+insert into servers (server_name, ip, hosting_company_id) values ("Microsoft-miki", "12-123", 1);
+insert into servers (server_name, ip, hosting_company_id) values ("Microsoft-maus", "12-124", 1);
+insert into servers (server_name, ip, hosting_company_id) values ("IBM-avi", "13-123", 2);
+insert into servers (server_name, ip, hosting_company_id) values ("IBM-beni", "13-124", 2);
+insert into servers (server_name, ip, hosting_company_id) values ("GoDaddy-aba", 14-123, 3);
+insert into servers (server_name, ip, hosting_company_id) values ("DigitalIO-digdug", 15-123, 4);
